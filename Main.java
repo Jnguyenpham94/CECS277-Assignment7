@@ -61,7 +61,7 @@ public class Main {
 		int size = input.size();
 		int index = 0;
 		
-		while(index < size)
+		while(index < size)//TODO: fix this part. DO NOT UNCOMMENT JSON ARGS TILL MAIN IS FIXED WILL CAUSE INFINITE LOOP
 		{	
 			SingletonCounter s = SingletonCounter.getInstance();
 			
