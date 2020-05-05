@@ -1,0 +1,7 @@
+This is only a modification to Assignment Six. Modify it so that Sublists are recursive. In Assignment Six the input contained no recursive Composites. 
+I.e., a Component was either a Shape or Composite where a Composite was only a list of Shapes. The input for Assignment 7 displays the power of the Composite pattern. 
+Like before, a Component can be a Shape or a Composite. However, now a Composite is either a Shape or a Composite
+
+The assignment requires only a change to the Main.
+
+Only turn in Main.java.  Start with the main.java from Assignment Six. Don't turn in any other classes from Assignment Six.
