@@ -59,7 +59,8 @@ public class Main {
 		int squareSide = 1;
 		
 		int size = input.size();
-		int index = 0;
+		 int index = 0;
+	
 		
 		while(index < size)//TODO: fix this part. DO NOT UNCOMMENT JSON ARGS TILL MAIN IS FIXED WILL CAUSE INFINITE LOOP
 		{	
@@ -67,7 +68,7 @@ public class Main {
 			
 			String line = input.get(index);
 			
-			if(line.equals("LISTSTART"))
+			if(line.equals("LISTSTART")) //these are composites or shape
 			{
 				ShapeComposite sCom = new ShapeComposite();
 				
@@ -89,18 +90,21 @@ public class Main {
 				
 				shapes.add(sCom);
 				++index;
-			}
+			} //these are components down below 
 			else if(line.equals("Circle"))
-			{
+			{ 
+				
 				Shape c = (Shape) new Circle(s.getCounter(), circleRadius++);
 				shapes.add(c);
-				++index;
+			 ++index;
 			}
 			else if(line.equals("Square"))
-			{
-				Shape sq = (Shape) new Square(s.getCounter(), squareSide++);
-				shapes.add(sq);
-				++index;
+			{	
+
+			Shape sq = (Shape) new Square(s.getCounter(), squareSide++);
+			shapes.add(sq);
+			++index;
+				
 			}
 			else
 			{
