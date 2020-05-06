@@ -1,0 +1,10 @@
+i did recursion using getShapes(input); didnt work bc i suspect arraylist keeps
+getting created so all the indexes are like 0 again because the arraylist 
+is new everytime i call getShapes
+
+many many errors with the program, if ran without any changes is an infinite loop
+
+if ran with the recusion of getShapes(input); gives errors where the method is called
+
+############################
+
