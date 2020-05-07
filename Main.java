@@ -87,6 +87,85 @@ public class Main {
 					else if(line.equals("LISTSTART"))
 					{
 						ShapeComposite sub = new ShapeComposite();
+						List<ShapeComponent> sublist = doSubList(input.subList(++index, input.size()), circleRadius, squareSide);
+
+						for(ShapeComponent sc: sublist)
+						{
+							sub.add(sc);
+							sCom.add(sub);
+							++index;
+						}
+					}
+					line = input.get(++index);
+
+				}
+				
+				shapes.add(sCom);
+				++index;
+			}
+			else if(line.equals("Circle"))
+			{
+				Shape c = (Shape) new Circle(s.getCounter(), circleRadius++);
+				shapes.add(c);
+				++index;
+			}
+			else if(line.equals("Square"))
+			{
+				Shape sq = (Shape) new Square(s.getCounter(), squareSide++);
+				shapes.add(sq);
+				++index;
+			}
+
+			else if (line.equals("LISTEND"))
+			{
+				return shapes;
+			}
+					
+			else
+			{
+				System.out.println("Error in input: " + line);
+			}	
+		}
+		
+		return shapes;
+	}
+
+	private static List<ShapeComponent> doSubList(List<String> input, int cR, int sS)
+	{
+		List<ShapeComponent> shapes = new ArrayList<ShapeComponent>();
+		
+		int circleRadius = cR;
+		int squareSide = sS;
+		
+		int size = input.size();
+		int index = 0;
+		
+		while(index < size)
+		{	
+			SingletonCounter s = SingletonCounter.getInstance();
+			
+			String line = input.get(index);
+			
+			if(line.equals("LISTSTART"))
+			{
+				ShapeComposite sCom = new ShapeComposite();
+				
+				line = input.get(++index);
+				while(!line.equals("LISTEND"))
+				{
+					if(line.equals("Circle"))
+					{
+						Shape c = (Shape) new Circle(s.getCounter(), circleRadius++);
+						sCom.add(c);
+					}
+					else if(line.equals("Square"))
+					{
+						Shape sq = (Shape) new Square(s.getCounter(), squareSide++);
+						sCom.add(sq);
+					}
+					else if(line.equals("LISTSTART"))
+					{
+						ShapeComposite sub = new ShapeComposite();
 						List<ShapeComponent> sublist = getShapes(input.subList(++index, input.size()));
 
 						for(ShapeComponent sc: sublist)
@@ -117,9 +196,10 @@ public class Main {
 			}
 
 			else if (line.equals("LISTEND"))
-					{
-						break;
-					}
+			{
+				return shapes;
+			}
+					
 			else
 			{
 				System.out.println("Error in input: " + line);

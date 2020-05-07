@@ -14,3 +14,29 @@ current assignment 6 the composite allows each component to be a shape or a comp
 the composite is a list of shape
 
 now he wants us to store a composite can be a list of shapes and composites 
+
+
+Jonathan's log of stuff: Brought back the helper function---> doSubList
+Square: Count = 1, Side = 1
+Circle: Count = 2, Radius = 5
+I am a Composite containing: 
+Square: Count = 3, Side = 2
+I am a Composite containing:
+Square: Count = 4, Side = 3
+End of Composite
+Circle: Count = 5, Radius = 6
+End of Composite
+Square: Count = 6, Side = 3   <--------- WRONG OUTPUT
+I am a Composite containing:
+Circle: Count = 7, Radius = 7
+End of Composite
+Circle: Count = 8, Radius = 8
+I am a Composite containing:
+I am a Composite containing:
+Circle: Count = 9, Radius = 9
+End of Composite
+I am a Composite containing:
+Circle: Count = 10, Radius = 9 <--------WRONG OUTPUT
+End of Composite
+End of Composite
+Square: Count = 11, Side = 4 <--------WRONG OUTPUT
