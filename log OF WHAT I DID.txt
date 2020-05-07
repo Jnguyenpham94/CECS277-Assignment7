@@ -8,3 +8,9 @@ if ran with the recusion of getShapes(input); gives errors where the method is c
 
 ############################
 
+
+current assignment 6 the composite allows each component to be a shape or a composite,
+
+the composite is a list of shape
+
+now he wants us to store a composite can be a list of shapes and composites 
