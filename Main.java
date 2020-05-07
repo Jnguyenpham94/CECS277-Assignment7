@@ -116,6 +116,10 @@ public class Main {
 				++index;
 			}
 
+			else if (line.equals("LISTEND"))
+					{
+						break;
+					}
 			else
 			{
 				System.out.println("Error in input: " + line);
