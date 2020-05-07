@@ -57,7 +57,7 @@ public class Main {
 		
 		int circleRadius = 5;
 		int squareSide = 1;
-		
+
 		int size = input.size();
 		 int index = 0;
 	
@@ -65,19 +65,16 @@ public class Main {
 		while(index < size)//TODO: fix this part. DO NOT UNCOMMENT JSON ARGS TILL MAIN IS FIXED WILL CAUSE INFINITE LOOP
 		{	
 			SingletonCounter s = SingletonCounter.getInstance();
-			String line = input.get(index);
+			String line = input.get(index++);
 			
 			if(line.equals("LISTSTART")) //these are composites or shape
 			{
-				doSublists(index, input);
+			
 				ShapeComposite sCom = new ShapeComposite();
 				line = input.get(++index);
 				while(!line.equals("LISTEND"))
 				{
-					if(line.equals("LISTSTART"))
-					{
-						doSublists(index++, input);
-					}
+					
 					if(line.equals("Circle"))
 					{
 						Shape c = (Shape) new Circle(s.getCounter(), circleRadius++);
@@ -87,6 +84,20 @@ public class Main {
 					{
 						Shape sq = (Shape) new Square(s.getCounter(), squareSide++);
 						sCom.add(sq);
+					}
+					else if(line.equals("LISTSTART"))
+					{	
+						ShapeComposite sub = new ShapeComposite();
+						List<ShapeComponent> lol = getShapes(input.subList(index++, input.size()));
+						
+						for(ShapeComponent sc: lol)
+						{
+							sub.add(sc);
+							sCom.add(sub);
+							index++;
+
+						}
+
 					}
 					line = input.get(++index);
 				}
@@ -118,41 +129,6 @@ public class Main {
 		return shapes;
 	}
 
-
-	private static List<ShapeComponent> doSublists(int index, List<String> input)
-	{
-		List<ShapeComponent> shapes = new ArrayList<ShapeComponent>();
-		int circleRadius = 5;
-		int squareSide = 1;
-
-		SingletonCounter s = SingletonCounter.getInstance();
-		String line = input.get(index);
-		ShapeComposite sCom = new ShapeComposite();
-				
-		line = input.get(++index);
-		while(!line.equals("LISTEND"))
-		{
-			if(line.equals("LISTSTART"))
-			{
-
-			}
-			if(line.equals("Circle"))
-			{
-				Shape c = (Shape) new Circle(s.getCounter(), circleRadius++);
-				sCom.add(c);
-			}
-			else if(line.equals("Square"))
-			{
-				Shape sq = (Shape) new Square(s.getCounter(), squareSide++);
-				sCom.add(sq);
-			}
-			line = input.get(++index);
-		}
-		
-		shapes.add(sCom);
-		++index;
-		return shapes;
-	}
 	
 
 }
