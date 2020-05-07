@@ -87,13 +87,13 @@ public class Main {
 					else if(line.equals("LISTSTART"))
 					{
 						ShapeComposite sub = new ShapeComposite();
-						List<ShapeComponent> sublist = getShapes(input.subList(index++, input.size()));
+						List<ShapeComponent> sublist = getShapes(input.subList(++index, input.size()));
 
 						for(ShapeComponent sc: sublist)
 						{
 							sub.add(sc);
 							sCom.add(sub);
-							index++;
+							++index;
 						}
 					}
 					line = input.get(++index);
