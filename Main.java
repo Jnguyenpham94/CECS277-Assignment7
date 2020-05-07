@@ -59,33 +59,30 @@ public class Main {
 		int squareSide = 1;
 		
 		int size = input.size();
-		 int index = 0;
-	
+		int index = 0;
 		
-		while(index < size)//TODO: fix this part. DO NOT UNCOMMENT JSON ARGS TILL MAIN IS FIXED WILL CAUSE INFINITE LOOP
+		while(index < size)
 		{	
 			SingletonCounter s = SingletonCounter.getInstance();
+			
 			String line = input.get(index);
 			
-			if(line.equals("LISTSTART")) //these are composites or shape
+			if(line.equals("LISTSTART"))
 			{
-			
 				ShapeComposite sCom = new ShapeComposite();
+				
 				line = input.get(++index);
 				while(!line.equals("LISTEND"))
 				{
-				
 					if(line.equals("Circle"))
 					{
 						Shape c = (Shape) new Circle(s.getCounter(), circleRadius++);
 						sCom.add(c);
-						index++;
 					}
 					else if(line.equals("Square"))
 					{
 						Shape sq = (Shape) new Square(s.getCounter(), squareSide++);
 						sCom.add(sq);
-						index++;
 					}
 					else if(line.equals("LISTSTART"))
 					{
@@ -100,26 +97,25 @@ public class Main {
 						}
 					}
 					line = input.get(++index);
+
 				}
 				
 				shapes.add(sCom);
 				++index;
-			
-			} //these are components down below 
+			}
 			else if(line.equals("Circle"))
-			{ 
+			{
 				Shape c = (Shape) new Circle(s.getCounter(), circleRadius++);
 				shapes.add(c);
-			 ++index;
+				++index;
 			}
 			else if(line.equals("Square"))
-			{	
-
-			Shape sq = (Shape) new Square(s.getCounter(), squareSide++);
-			shapes.add(sq);
-			++index;
-				
+			{
+				Shape sq = (Shape) new Square(s.getCounter(), squareSide++);
+				shapes.add(sq);
+				++index;
 			}
+
 			else
 			{
 				System.out.println("Error in input: " + line);
@@ -128,8 +124,5 @@ public class Main {
 		
 		return shapes;
 	}
-
-
-	
 
 }
