@@ -1,3 +1,6 @@
+//Assignment 7
+//Kenny Ta 015020302
+//Jonathan Nguyen-Pham, 016297682 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -6,6 +9,8 @@ import java.util.Scanner;
 
 public class Main {
 
+	static int circleRadius = 5;
+	static int squareSide = 1;
 	public static void main(String[] args)
 	{
 		if(args.length != 1)
@@ -55,9 +60,6 @@ public class Main {
 	{
 		List<ShapeComponent> shapes = new ArrayList<ShapeComponent>();
 		
-		int circleRadius = 5;
-		int squareSide = 1;
-		
 		int size = input.size();
 		int index = 0;
 		
@@ -66,8 +68,19 @@ public class Main {
 			SingletonCounter s = SingletonCounter.getInstance();
 			
 			String line = input.get(index);
-			
-			if(line.equals("LISTSTART"))
+			if(line.equals("Circle"))
+			{
+				Shape c = (Shape) new Circle(s.getCounter(), circleRadius++);
+				shapes.add(c);
+				++index;
+			}
+			else if(line.equals("Square"))
+			{
+				Shape sq = (Shape) new Square(s.getCounter(), squareSide++);
+				shapes.add(sq);
+				++index;
+			}
+			else if(line.equals("LISTSTART"))
 			{
 				ShapeComposite sCom = new ShapeComposite();
 				
@@ -87,7 +100,7 @@ public class Main {
 					else if(line.equals("LISTSTART"))
 					{
 						ShapeComposite sub = new ShapeComposite();
-						List<ShapeComponent> sublist = doSubList(input.subList(++index, input.size()), circleRadius, squareSide);
+						List<ShapeComponent> sublist = doSubList(input.subList(++index, input.size()));
 
 						for(ShapeComponent sc: sublist)
 						{
@@ -130,12 +143,9 @@ public class Main {
 		return shapes;
 	}
 
-	private static List<ShapeComponent> doSubList(List<String> input, int cR, int sS)
+	private static List<ShapeComponent> doSubList(List<String> input)
 	{
 		List<ShapeComponent> shapes = new ArrayList<ShapeComponent>();
-		
-		int circleRadius = cR;
-		int squareSide = sS;
 		
 		int size = input.size();
 		int index = 0;
@@ -163,18 +173,6 @@ public class Main {
 						Shape sq = (Shape) new Square(s.getCounter(), squareSide++);
 						sCom.add(sq);
 					}
-					else if(line.equals("LISTSTART"))
-					{
-						ShapeComposite sub = new ShapeComposite();
-						List<ShapeComponent> sublist = getShapes(input.subList(++index, input.size()));
-
-						for(ShapeComponent sc: sublist)
-						{
-							sub.add(sc);
-							sCom.add(sub);
-							++index;
-						}
-					}
 					line = input.get(++index);
 
 				}
@@ -195,15 +193,10 @@ public class Main {
 				++index;
 			}
 
-			else if (line.equals("LISTEND"))
+ 			else if (line.equals("LISTEND"))
 			{
-				return shapes;
-			}
-					
-			else
-			{
-				System.out.println("Error in input: " + line);
-			}	
+				break;
+			} 	
 		}
 		
 		return shapes;
