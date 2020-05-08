@@ -17,6 +17,7 @@ now he wants us to store a composite can be a list of shapes and composites
 
 
 Jonathan's log of stuff: Brought back the helper function---> doSubList
+
 Square: Count = 1, Side = 1
 Circle: Count = 2, Radius = 5
 I am a Composite containing: 
@@ -26,7 +27,7 @@ Square: Count = 4, Side = 3
 End of Composite
 Circle: Count = 5, Radius = 6
 End of Composite
-Square: Count = 6, Side = 3   <--------- WRONG OUTPUT
+Square: Count = 6, Side = 3   <--------- WRONG OUTPUT Side = 4
 I am a Composite containing:
 Circle: Count = 7, Radius = 7
 End of Composite
@@ -36,7 +37,7 @@ I am a Composite containing:
 Circle: Count = 9, Radius = 9
 End of Composite
 I am a Composite containing:
-Circle: Count = 10, Radius = 9 <--------WRONG OUTPUT
+Circle: Count = 10, Radius = 9 <--------WRONG OUTPUT Radius = 10
 End of Composite
 End of Composite
-Square: Count = 11, Side = 4 <--------WRONG OUTPUT
+Square: Count = 11, Side = 4 <--------WRONG OUTPUT Side = 5
