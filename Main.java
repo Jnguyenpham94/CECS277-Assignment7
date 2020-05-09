@@ -131,7 +131,7 @@ public class Main {
 
 			else if (line.equals("LISTEND"))
 			{
-				break;
+				return shapes;
 			}
 					
 			else
@@ -195,7 +195,7 @@ public class Main {
 
  			else if (line.equals("LISTEND"))
 			{
-				break;
+				return shapes;
 			} 	
 		}
 		
